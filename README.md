@@ -5,7 +5,7 @@
   - Bùi Trần Khánh Minh 💙
   - Trần Đức Minh Hoàng 💜
 ### Giao Diện Chương Trình 🤡
-![Screenshot 2024-03-27 162824](https://github.com/ndlqna/Ma_Playfair/assets/138576180/59f4fdaa-8b14-4009-85dc-2f06c7c89c7f)
+![image](https://github.com/ndlqna/Ma_Playfair/assets/138576180/34340ca2-7430-40ef-9d9d-b2e8d15d7ac1)
 ## Cấu trúc thư mục
 - main.cpp: Mã nguồn cho giao diện người dùng và xử lý sự kiện.
 - playfair.h: Khai báo các hàm cho thuật toán Playfair cipher.
