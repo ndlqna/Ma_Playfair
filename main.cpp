@@ -2,14 +2,13 @@
 #include <commctrl.h>
 #include <string>
 #include "playfair.h"
-
 #define ID_EDITBOX_PLAINTEXT    1
 #define ID_EDITBOX_KEY          2
 #define ID_BUTTON_ENCRYPT       3
 #define ID_EDITBOX_CIPHERTEXT   4
 #define ID_BUTTON_DECRYPT       5
 #define ID_EDITBOX_DECRYPTTEXT  6
-
+using namespace std;
 LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow) {
@@ -95,9 +94,9 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
 	            GetWindowText(hwndPlaintext, plaintext, sizeof(plaintext));
 	            GetWindowText(hwndKey, key, sizeof(key));
 	
-	            generateMatrix(std::string(key));
-	            std::string formatted = formatMessage(std::string(plaintext));
-	            std::string ciphertext = encrypt(formatted);
+	            generateMatrix(string(key));
+	            string formatted = formatMessage(string(plaintext));
+	            string ciphertext = encrypt(formatted);
 	
 	            SetWindowText(hwndCiphertext, ciphertext.c_str());
 	            break;
@@ -110,8 +109,8 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
 	            GetWindowText(hwndCiphertext, ciphertext, sizeof(ciphertext));
 	            GetWindowText(hwndKey, key, sizeof(key));
 	
-	            generateMatrix(std::string(key));
-	            std::string decrypted = decrypt(std::string(ciphertext));
+	            generateMatrix(string(key));
+	            string decrypted = decrypt(string(ciphertext));
 	
 	            SetWindowText(hwndDecrypttext, decrypted.c_str());
 	            break;

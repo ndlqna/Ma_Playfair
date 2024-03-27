@@ -1,18 +1,18 @@
 #include "playfair.h"
 #include <cctype>
-
+using namespace std;
 char mat[5][5];
 
-void generateMatrix(std::string key) {
+void generateMatrix(string key) {
     int flag[26] = {0};
     int x = 0, y = 0;
 
     for (int i = 0; i < key.length(); i++) {
         if (key[i] == 'j') key[i] = 'i';
 
-        if (flag[std::tolower(key[i]) - 'a'] == 0) {
-            mat[x][y++] = std::tolower(key[i]);
-            flag[std::tolower(key[i]) - 'a'] = 1;
+        if (flag[tolower(key[i]) - 'a'] == 0) {
+            mat[x][y++] = tolower(key[i]);
+            flag[tolower(key[i]) - 'a'] = 1;
         }
         if (y == 5) x++, y = 0;
     }
@@ -28,13 +28,13 @@ void generateMatrix(std::string key) {
     }
 }
 
-std::string formatMessage(std::string msg) {
+string formatMessage(string msg) {
     for (int i = 0; i < msg.length(); i++) {
         if (msg[i] == 'j') msg[i] = 'i';
     }
 
     for (int i = 1; i < msg.length(); i += 2) {
-        if (std::tolower(msg[i - 1]) == std::tolower(msg[i])) msg.insert(i, "x");
+        if (tolower(msg[i - 1]) == tolower(msg[i])) msg.insert(i, "x");
     }
 
     if (msg.length() % 2 != 0) msg += "x";
@@ -58,8 +58,8 @@ Position getPosition(char c) {
     return {-1, -1};
 }
 
-std::string encrypt(std::string message) {
-    std::string ctext = "";
+string encrypt(string message) {
+    string ctext = "";
     for (int i = 0; i < message.length(); i += 2) {
         Position p1 = getPosition(std::tolower(message[i]));
         Position p2 = getPosition(std::tolower(message[i + 1]));
@@ -80,11 +80,11 @@ std::string encrypt(std::string message) {
     return ctext;
 }
 
-std::string decrypt(std::string message) {
-    std::string ptext = "";
+string decrypt(string message) {
+    string ptext = "";
     for (int i = 0; i < message.length(); i += 2) {
-        Position p1 = getPosition(std::tolower(message[i]));
-        Position p2 = getPosition(std::tolower(message[i + 1]));
+        Position p1 = getPosition(tolower(message[i]));
+        Position p2 = getPosition(tolower(message[i + 1]));
         int x1 = p1.row, y1 = p1.col;
         int x2 = p2.row, y2 = p2.col;
 
